@@ -34,10 +34,10 @@ android.accept_sdk_license = True
 # لا نضيف CAMERA عمداً: لو اتعلنت ولم تتمنح، فتح الكاميرا بيفشل. بنفتح تطبيق الكاميرا الأصلي.
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE
 android.enable_androidx = True
-# السبب الحقيقي للفشل: gradle في p4a بيدوّر في google() وjcenter بس، ومكتبة Tesseract4Android على Maven Central
-# ("Could not find ...tesseract4android:4.7.0") — فلازم نضيف Maven Central هنا.
-# مهم: من غير علامات تنصيص (buildozer بيمرّرها حرفياً لـgradle فبتبوّظ السطر)
-android.add_gradle_repositories = mavenCentral()
+# Tesseract4Android بيتوزّع عن طريق JitPack (مش Maven Central ولا google) — لازم نضيف مستودع JitPack.
+# بنكتبه من غير علامات تنصيص خارجية (buildozer بيمرّرها حرفياً لـgradle).
+# لو JitPack رجّع 404 في أول مرة (بيبني المكتبة عند أول طلب) أعد تشغيل الـworkflow بعد دقيقتين.
+android.add_gradle_repositories = maven { url 'https://jitpack.io' }
 android.gradle_dependencies = cz.adaptech.tesseract4android:tesseract4android:4.5.0
 android.allow_backup = True
 
