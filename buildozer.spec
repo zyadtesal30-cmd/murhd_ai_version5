@@ -36,7 +36,8 @@ android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE
 android.enable_androidx = True
 # السبب الحقيقي للفشل: gradle في p4a بيدوّر في google() وjcenter بس، ومكتبة Tesseract4Android على Maven Central
 # ("Could not find ...tesseract4android:4.7.0") — فلازم نضيف Maven Central هنا.
-android.add_gradle_repositories = "maven { url 'https://repo1.maven.org/maven2' }"
+# مهم: من غير علامات تنصيص (buildozer بيمرّرها حرفياً لـgradle فبتبوّظ السطر)
+android.add_gradle_repositories = mavenCentral()
 android.gradle_dependencies = cz.adaptech.tesseract4android:tesseract4android:4.5.0
 android.allow_backup = True
 
